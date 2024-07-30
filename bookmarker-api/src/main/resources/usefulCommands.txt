@@ -1,0 +1,14 @@
+# Build a Docker image for the Spring Boot application with a custom image name
+./mvnw spring-boot:build-image -Dspring-boot.build-image.imageName=sivaprasadreddy/bookmarker-api
+
+# Build a Docker image for the Spring Boot application using default settings
+./mvnw spring-boot:build-image
+
+# Build a Docker image for the application using Jib with a specified image name
+./mvnw jib:build -Dimage=isvaso/bookmarker-api
+
+# Build a Docker image using Jib and push it to the local Docker daemon with a specified image name
+./mvnw jib:dockerBuild -Dimage=isvaso/bookmarker-api
+
+# Run a Docker container from the specified image and map port 8080 of the host to port 8080 of the container
+docker run -p 8080:8080 isvaso/bookmarker-api
