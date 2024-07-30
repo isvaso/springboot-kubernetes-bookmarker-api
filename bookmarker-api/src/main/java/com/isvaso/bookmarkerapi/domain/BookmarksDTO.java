@@ -11,7 +11,7 @@ import java.util.List;
 @Setter
 public class BookmarksDTO {
 
-    private List<Bookmark> data;
+    private List<BookmarkDTO> data;
 
     private long totalElements;
 
@@ -29,14 +29,14 @@ public class BookmarksDTO {
 
     private boolean hasPrevious;
 
-    public BookmarksDTO(Page<Bookmark> bookmarkPage) {
-        this.setData(bookmarkPage.getContent());
-        this.setTotalElements(bookmarkPage.getTotalElements());
-        this.setTotalPages(bookmarkPage.getTotalPages());
-        this.setCurrentPage(bookmarkPage.getNumber() + 1);
-        this.setFirst(bookmarkPage.isFirst());
-        this.setLast(bookmarkPage.isLast());
-        this.setHasNext(bookmarkPage.hasNext());
-        this.setHasPrevious(bookmarkPage.hasPrevious());
+    public BookmarksDTO(Page<BookmarkDTO> bookmarkDTOPage) {
+        this.setData(bookmarkDTOPage.getContent());
+        this.setTotalElements(bookmarkDTOPage.getTotalElements());
+        this.setTotalPages(bookmarkDTOPage.getTotalPages());
+        this.setCurrentPage(bookmarkDTOPage.getNumber() + 1);
+        this.setFirst(bookmarkDTOPage.isFirst());
+        this.setLast(bookmarkDTOPage.isLast());
+        this.setHasNext(bookmarkDTOPage.hasNext());
+        this.setHasPrevious(bookmarkDTOPage.hasPrevious());
     }
 }
