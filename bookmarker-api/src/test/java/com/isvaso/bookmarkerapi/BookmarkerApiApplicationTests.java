@@ -1,4 +1,4 @@
-package com.isvaso.bookmarker_api;
+package com.isvaso.bookmarkerapi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,4 +1,4 @@
-package com.isvaso.bookmarker_api;
+package com.isvaso.bookmarkerapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
