@@ -14,7 +14,6 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.time.Instant;
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -34,28 +33,26 @@ class BookmarksControllerTest {
     @Autowired
     private BookmarkRepository bookmarkRepository;
 
-    private List<Bookmark> bookmarks;
-
     @BeforeEach
     void setUp() {
         bookmarkRepository.deleteAllInBatch();
-        bookmarks = List.of(
+        List<Bookmark> bookmarks = List.of(
                 new Bookmark(null, "SpringBlog", "https://spring.io/blog", Instant.now()),
-        new Bookmark(null, "Quarkus", "https://quarkus.io/", Instant.now()),
-        new Bookmark(null, "Micronaut", "https://micronaut.io/", Instant.now()),
-        new Bookmark(null, "JOOQ", "https://www.jooq.org/", Instant.now()),
-        new Bookmark(null, "VladMihalcea", "https://vladmihalcea.com", Instant.now()),
-        new Bookmark(null, "Thoughts On Java", "https://thorben-janssen.com/", Instant.now()),
-        new Bookmark(null, "DZone", "https://dzone.com", Instant.now()),
-        new Bookmark(null, "DevOpsBookmarks", "http://www.devopsbookmarks.com/", Instant.now()),
-        new Bookmark(null, "Kubernetes docs", "https://kubernetes.io/docs/home/", Instant.now()),
-        new Bookmark(null, "Expressjs", "https://expressjs.com/", Instant.now()),
-        new Bookmark(null, "Marcobehler", "https://www.marcobehler.com", Instant.now()),
-        new Bookmark(null, "baeldung", "https://www.baeldung.com", Instant.now()),
-        new Bookmark(null, "devqlan", "https://www.devqlan.com", Instant.now()),
-        new Bookmark(null, "linuxize", "https://linuxize.com", Instant.now())
+                new Bookmark(null, "Quarkus", "https://quarkus.io/", Instant.now()),
+                new Bookmark(null, "Micronaut", "https://micronaut.io/", Instant.now()),
+                new Bookmark(null, "JOOQ", "https://www.jooq.org/", Instant.now()),
+                new Bookmark(null, "VladMihalcea", "https://vladmihalcea.com", Instant.now()),
+                new Bookmark(null, "Thoughts On Java", "https://thorben-janssen.com/", Instant.now()),
+                new Bookmark(null, "DZone", "https://dzone.com", Instant.now()),
+                new Bookmark(null, "DevOpsBookmarks", "http://www.devopsbookmarks.com/", Instant.now()),
+                new Bookmark(null, "Kubernetes docs", "https://kubernetes.io/docs/home/", Instant.now()),
+                new Bookmark(null, "Expressjs", "https://expressjs.com/", Instant.now()),
+                new Bookmark(null, "Marcobehler", "https://www.marcobehler.com", Instant.now()),
+                new Bookmark(null, "baeldung", "https://www.baeldung.com", Instant.now()),
+                new Bookmark(null, "devqlan", "https://www.devqlan.com", Instant.now()),
+                new Bookmark(null, "linuxize", "https://linuxize.com", Instant.now())
         );
-        
+
         bookmarkRepository.saveAll(bookmarks);
     }
 
@@ -86,7 +83,7 @@ class BookmarksControllerTest {
             boolean isLast,
             boolean hasNext,
             boolean hasPrevious
-            ) throws Exception {
+    ) throws Exception {
         mockMvc.perform(get("/api/bookmarks?page=" + pageNumber))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.totalElements", CoreMatchers.equalTo(totalElements)))
