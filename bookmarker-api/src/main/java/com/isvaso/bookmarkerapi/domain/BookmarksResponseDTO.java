@@ -9,9 +9,9 @@ import java.util.List;
 
 @Getter
 @Setter
-public class BookmarksDTO {
+public class BookmarksResponseDTO {
 
-    private List<BookmarkDTO> data;
+    private List<BookmarkResponseDTO> data;
 
     private long totalElements;
 
@@ -29,7 +29,7 @@ public class BookmarksDTO {
 
     private boolean hasPrevious;
 
-    public BookmarksDTO(Page<BookmarkDTO> bookmarkDTOPage) {
+    public BookmarksResponseDTO(Page<BookmarkResponseDTO> bookmarkDTOPage) {
         this.setData(bookmarkDTOPage.getContent());
         this.setTotalElements(bookmarkDTOPage.getTotalElements());
         this.setTotalPages(bookmarkDTOPage.getTotalPages());

@@ -1,22 +1,20 @@
 package com.isvaso.bookmarkerapi.domain;
 
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.Instant;
 
 @Getter
 @Setter
-@AllArgsConstructor
-public class BookmarkDTO {
+public class CreateBookmarkRequestDTO {
 
-    private Long id;
-
+    @NotEmpty(message = "Title should not be empty")
     private String title;
 
+    @NotEmpty(message = "URL should not be empty")
     private String url;
 
-    private Instant createdAt;
 }

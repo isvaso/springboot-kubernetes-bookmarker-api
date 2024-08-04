@@ -11,16 +11,16 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public interface BookmarkRepository extends JpaRepository<Bookmark, Long> {
 
-    @Query("select new com.isvaso.bookmarkerapi.domain.BookmarkDTO(b.id, b.title, b.url, b.createdAt) from Bookmark b")
-    Page<BookmarkDTO> findBookmarks(Pageable pageable);
+    @Query("select new com.isvaso.bookmarkerapi.domain.BookmarkResponseDTO(b.id, b.title, b.url, b.createdAt) from Bookmark b")
+    Page<BookmarkResponseDTO> findBookmarks(Pageable pageable);
 
     @Query("""
-    select new com.isvaso.bookmarkerapi.domain.BookmarkDTO(b.id, b.title, b.url, b.createdAt) from Bookmark b
+    select new com.isvaso.bookmarkerapi.domain.BookmarkResponseDTO(b.id, b.title, b.url, b.createdAt) from Bookmark b
     where lower(b.title) like lower(concat('%', :query, '%'))
     """)
-    Page<BookmarkDTO> searchBookmarks(String query, Pageable pageable);
+    Page<BookmarkResponseDTO> searchBookmarks(String query, Pageable pageable);
 
-    Page<BookmarkDTO> findByTitleContainsIgnoreCase(String query, Pageable pageable);
+    Page<BookmarkResponseDTO> findByTitleContainsIgnoreCase(String query, Pageable pageable);
 
 //    Page<BookmarkVM> findByTitleContainsIgnoreCase(String query, Pageable pageable);
 }
