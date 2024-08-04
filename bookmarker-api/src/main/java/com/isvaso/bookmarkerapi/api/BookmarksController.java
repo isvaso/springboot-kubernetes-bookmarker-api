@@ -16,7 +16,11 @@ public class BookmarksController {
     private final BookmarksService bookmarksService;
 
     @GetMapping
-    public BookmarksDTO getBookmarks(@RequestParam(name = "page", defaultValue = "1") Integer page) {
-        return bookmarksService.getBookmarks(page);
+    public BookmarksDTO getBookmarks(@RequestParam(name = "page", defaultValue = "1") Integer page,
+                                     @RequestParam(name = "query", defaultValue = "") String query) {
+        if (query == null || query.trim().isEmpty()) {
+            return bookmarksService.getBookmarks(page);
+        }
+        return bookmarksService.searchBookmarks(query, page);
     }
 }

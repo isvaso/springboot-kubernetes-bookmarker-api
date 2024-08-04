@@ -9,7 +9,6 @@ import java.time.Instant;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
 public class BookmarkDTO {
 
