@@ -8,3 +8,13 @@ data:
   postgres_dbname: "appdb"
   postgres_username: "postgres"
   postgres_password: "postgres"
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: bookmarker-secrets
+type: Opaque
+data:
+  postgres_username: cG9zdGdyZXM=
+  postgres_password: cG9zdGdyZXM=
